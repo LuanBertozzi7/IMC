@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+
+
+:root {
+  --primary-color: rgb(207, 207, 63);
+  --secondary-color: rgb(80, 208, 80);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(111, 205, 205);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+.container {
+  background: white;
+  max-width: 640px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+/* define o tamanho de todos os elementos no input, e alinhou */
+form input, form label, form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+form input {
+  font-size: 24px;
+  height: 50px;
+  padding : 0 20px;
+}
+form input:focus {
+  outline: 1px solid var(primary-color);
+}
+
+form button {
+  border: none;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  height: 50px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+form button:hover {
+  background: var(--secondary-color);
+}
+
+.paragrafo-resultado, .bad {
+  background: var(--primary-color);
+  padding: 10px 20px;
+}
+
+.bad {
+  background: red;
+}
+
+
+
