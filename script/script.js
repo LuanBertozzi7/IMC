@@ -1,4 +1,3 @@
-  // Capturar evento de submit do formulário
 const form = document.querySelector('#formulario');
 
 form.addEventListener('submit', function (e) {
@@ -10,7 +9,6 @@ form.addEventListener('submit', function (e) {
   const altura = Number(inputAltura.value);
 
 
-// tratamento de erros
   if (!peso) {
     setResultado('Peso inválido', false);
     return;
@@ -22,11 +20,16 @@ form.addEventListener('submit', function (e) {
 
 
   const imc = getImc(peso, altura);
+  console.info(imc) // display my IMC value
   const nivelImc = getNivelImc(imc);
+  const nivelIndex = getNivelImcIndex(imc);
+
+  console.info(getNivelImc.length) // display my IMC level
+  console.info(nivelImc); // display my IMC result
+
 
   const msg = `Seu IMC é ${imc} (${nivelImc}).`;
-
-  setResultado(msg, true);
+  setResultado(msg, true, nivelIndex);
 });
 
 function getNivelImc (imc) {
@@ -41,6 +44,15 @@ function getNivelImc (imc) {
   if (imc < 18.5) return nivel[0];
 }
 
+function getNivelImcIndex(imc) {
+  if (imc >= 39.9) return 5;
+  if (imc >= 34.9) return 4;
+  if (imc >= 29.9) return 3;
+  if (imc >= 24.9) return 2;
+  if (imc >= 18.5) return 1;
+  if (imc < 18.5) return 0;
+}
+
 function getImc (peso, altura) {
   const imc = peso / altura ** 2;
   return imc.toFixed(2);
@@ -51,7 +63,7 @@ function criaP () {
   return p;
 }
 
-function setResultado (msg, isValid) {
+function setResultado (msg, isValid, nivelIndex) {
   const resultado = document.querySelector('#resultado');
   resultado.innerHTML = '';
 
@@ -65,4 +77,19 @@ function setResultado (msg, isValid) {
 
   p.innerHTML = msg;
   resultado.appendChild(p);
+
+  // Limpa as cores anteriores
+  for (let i = 0; i <= 5; i++) {
+    const el = document.querySelector('.level' + i);
+    if (el) el.style.color = '';
+  }
+
+  // Destaca o nível atual
+  if (nivelIndex !== undefined) {
+    const cores = ['red', 'green', 'blue', 'yellow', 'orange', 'purple'];
+    const el = document.querySelector('.level' + nivelIndex);
+    if (el) el.style.color = cores[nivelIndex];
+  }
 }
+
+
