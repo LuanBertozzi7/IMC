@@ -44,19 +44,6 @@ th, td {
   text-align: left;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* define o tamanho de todos os elementos no input, e alinhou */
 form input, form label, form button {
   display: block;
   width: 100%;
